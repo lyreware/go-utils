@@ -2,6 +2,10 @@ package utils
 
 // CloneByteSlice clones a slice of bytes, as slices.Clone would do, but does not allocate extra space.
 func CloneByteSlice(bytes []byte) []byte {
+	if bytes == nil {
+		return nil
+	}
+
 	clone := make([]byte, len(bytes))
 	copy(clone, bytes)
 
@@ -19,12 +23,9 @@ func ConcatByteSlices(slices ...[]byte) []byte {
 		return nil
 	}
 
-	concat := make([]byte, totalLen)
-	concatPosition := 0
-
+	concat := make([]byte, 0, totalLen)
 	for _, slice := range slices {
-		copy(concat[concatPosition:], slice)
-		concatPosition += len(slice)
+		concat = append(concat, slice...)
 	}
 
 	return concat
