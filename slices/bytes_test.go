@@ -1,10 +1,8 @@
-package slices_test
+package slices
 
 import (
-	stdslices "slices"
+	"slices"
 	"testing"
-
-	"github.com/lyreware/go-utils/slices"
 )
 
 var cloneBytesTests = []struct {
@@ -25,8 +23,8 @@ func TestCloneBytes(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			t.Parallel()
 
-			clone := slices.CloneBytes(test.origin)
-			if !stdslices.Equal(clone, test.origin) {
+			clone := CloneBytes(test.origin)
+			if !slices.Equal(clone, test.origin) {
 				t.Fatalf("CloneBytes(%v) returned %v", test.origin, clone)
 			}
 
@@ -96,8 +94,8 @@ func TestConcatBytes(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			t.Parallel()
 
-			concat := slices.ConcatBytes(test.slices...)
-			if !stdslices.Equal(concat, test.concat) {
+			concat := ConcatBytes(test.slices...)
+			if !slices.Equal(concat, test.concat) {
 				t.Fatalf(
 					"ConcatBytes(%v): expected %v but got %v",
 					test.slices,

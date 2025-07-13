@@ -1,9 +1,7 @@
-package convert_test
+package convert
 
 import (
 	"testing"
-
-	"github.com/lyreware/go-utils/convert"
 )
 
 var ToPtrTests = []struct {
@@ -18,7 +16,7 @@ func TestToPtr(t *testing.T) {
 	t.Parallel()
 
 	for _, test := range ToPtrTests {
-		ptr := convert.ToPtr(test.value)
+		ptr := ToPtr(test.value)
 		if ptr == nil || *ptr != test.value {
 			t.Fatalf("ToPtr(%+v) returned %+v", test.value, ptr)
 		}

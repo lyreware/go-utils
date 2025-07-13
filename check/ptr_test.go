@@ -1,9 +1,8 @@
-package check_test
+package check
 
 import (
 	"testing"
 
-	"github.com/lyreware/go-utils/check"
 	"github.com/lyreware/go-utils/convert"
 )
 
@@ -34,7 +33,7 @@ func TestIsNil(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			t.Parallel()
 
-			isNil := check.IsNil(test.arg)
+			isNil := IsNil(test.arg)
 			if isNil != test.isNil {
 				t.Fatalf(
 					"IsNil(%v) expected %t but got %t",

@@ -1,10 +1,8 @@
-package atomic_test
+package atomic
 
 import (
 	"errors"
 	"testing"
-
-	"github.com/lyreware/go-utils/atomic"
 )
 
 func TestDoFuncError(t *testing.T) {
@@ -12,7 +10,7 @@ func TestDoFuncError(t *testing.T) {
 
 	value := 123
 
-	err := atomic.Do(&value, value, func(x *int) error {
+	err := Do(&value, value, func(x *int) error {
 		*x *= 123
 
 		return errors.New("runtime error")
@@ -27,7 +25,7 @@ func TestDoSuccess(t *testing.T) {
 
 	value := 123
 
-	err := atomic.Do(&value, value, func(x *int) error {
+	err := Do(&value, value, func(x *int) error {
 		*x *= 2
 
 		return nil
@@ -40,7 +38,7 @@ func TestDoSuccess(t *testing.T) {
 func TestDoTargetIsNil(t *testing.T) {
 	t.Parallel()
 
-	err := atomic.Do(nil, 5, func(_ *int) error {
+	err := Do(nil, 5, func(_ *int) error {
 		return nil
 	})
 	if err == nil || err.Error() != "target is nil" {
