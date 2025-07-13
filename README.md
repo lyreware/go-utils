@@ -1,3 +1,3 @@
 # Go-Utils 🛠️
 
-Platform golang utils.
+Golang utils.
