@@ -110,6 +110,10 @@ linters:
         text: "avoid magic numbers like"
         linters:
           - revive
+      - path: utils.go
+        text: "avoid meaningless package names"
+        linters:
+          - revive
 
   settings:
     cyclop:
