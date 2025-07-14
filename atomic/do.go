@@ -1,7 +1,7 @@
 package atomic
 
 import (
-	"fmt"
+	"errors"
 )
 
 // DoFunc is a function that operates on a dirty value to atomically modify a clean value.
@@ -13,7 +13,7 @@ type DoFunc[T any] func(dirty *T) error
 func Do[T any](target *T, dirty T, fn DoFunc[T]) error {
 	err := fn(&dirty)
 	if err != nil {
-		return fmt.Errorf("%w: %w", ErrExternal, err)
+		return errors.Join(ErrExternal, err)
 	}
 
 	if target == nil {
