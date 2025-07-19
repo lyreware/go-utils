@@ -3,7 +3,7 @@ package check
 import (
 	"testing"
 
-	"github.com/lyreware/go-utils/convert"
+	"github.com/crypto-tribe/go-utils/convert"
 )
 
 var IsNilTests = []struct {
