@@ -6,7 +6,7 @@ import (
 	"github.com/crypto-tribe/go-utils/convert"
 )
 
-var IsNilTests = []struct {
+var isNilTests = []struct {
 	name  string
 	arg   any
 	isNil bool
@@ -29,7 +29,7 @@ var IsNilTests = []struct {
 func TestIsNil(t *testing.T) {
 	t.Parallel()
 
-	for _, test := range IsNilTests {
+	for _, test := range isNilTests {
 		t.Run(test.name, func(t *testing.T) {
 			t.Parallel()
 

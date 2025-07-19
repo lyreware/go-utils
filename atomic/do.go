@@ -4,7 +4,7 @@ import (
 	"errors"
 )
 
-// DoFunc is a function that operates on a dirty value to atomically modify a clean value.
+// DoFunc is a function that operates on a dirty value.
 type DoFunc[T any] func(dirty *T) error
 
 // Do passes the dirty value to the function and, if the function returned without
